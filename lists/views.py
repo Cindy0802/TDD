@@ -4,9 +4,9 @@ from lists.models import Item
 
 # Create your views here.
 def home_page(request):
-	if request.method == 'POST':
-		Item.objects.create(text=request.POST['item_text'])
-		return redirect('/lists/the-only-list-in-the-world/')
+	# if request.method == 'POST':
+	# 	Item.objects.create(text=request.POST['item_text'])
+	# 	return redirect('/lists/the-only-list-in-the-world/')
 	return render(request,'home.html')
 	#items=Item.objects.all()
 	
@@ -15,6 +15,10 @@ def view_list(request):
 	items=Item.objects.all()
 	return render(request,'list.html',{'items':items})
 	
+
+def new_list(request):
+	Item.objects.create(text=request.POST['item_text'])
+	return redirect('/lists/the-only-list-in-the-world/')	
 	# 	new_item_text=request.POST['item_text']
 	# 	Item.objects.create(text=new_item_text)
 	# else:
