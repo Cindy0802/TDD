@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn server for 120.77.43.212
+
+[Service]
+Restart=on-failure
+User=root
+WorkingDirectory=/home/cindy/sites/120.77.43.212/source
+ExecStart=/home/cindy/sites/120.77.43.212/virtualenv/bin/gunicorn --bind unix:/tmp/120.77.43.212.socket superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
